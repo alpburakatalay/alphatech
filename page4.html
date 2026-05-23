@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Contact - Alphatech Holding</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --bg:#050505;
+    --card:#101010;
+    --soft:#8e8e8e;
+    --line:#1d1d1d;
+    --white:#ffffff;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:white;
+    overflow-x:hidden;
+}
+
+/* BACKGROUND */
+.bg{
+    position:fixed;
+    inset:0;
+    z-index:-3;
+    background:
+    radial-gradient(circle at top left, rgba(255,255,255,0.04), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(255,255,255,0.03), transparent 30%),
+    #050505;
+}
+
+.grid{
+    position:fixed;
+    inset:0;
+    z-index:-2;
+    background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size:40px 40px;
+    animation:gridMove 14s linear infinite;
+}
+
+@keyframes gridMove{
+    from{ transform:translateY(0); }
+    to{ transform:translateY(40px); }
+}
+
+/* NAVBAR */
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:24px 70px;
+    background:rgba(0,0,0,0.45);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(255,255,255,0.05);
+    z-index:999;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family:'Orbitron',sans-serif;
+    font-size:28px;
+    letter-spacing:3px;
+    font-weight:700;
+}
+
+.logo img {
+    height: 35px;
+    width: auto;
+    object-fit: contain;
+}
+
+.logo span{ color:#8d8d8d; }
+.nav-right{ display:flex; align-items:center; gap:40px; }
+nav ul{ display:flex; list-style:none; gap:35px; }
+nav ul a{ text-decoration:none; color:#cfcfcf; font-size:14px; transition:.3s; }
+nav ul a:hover{ color:white; }
+nav ul li.active a{ color: white; font-weight: 600; }
+
+/* CONTENT WRAPPER */
+.contact-section {
+    min-height: 100vh;
+    padding: 140px 70px 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* HEADER */
+.contact-header {
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+.contact-header h5 {
+    color: #8c8c8c;
+    letter-spacing: 3px;
+    margin-bottom: 25px;
+    font-size: 13px;
+}
+
+.contact-header h1 {
+    font-size: 64px;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 30px;
+}
+
+.contact-header h1 span { color: #737373; }
+
+.contact-header p {
+    max-width: 800px;
+    margin: 0 auto;
+    color: #a1a1a1;
+    line-height: 2;
+    font-size: 18px;
+}
+
+/* CONTACT GRID */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.contact-card {
+    background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 24px;
+    padding: 40px 30px;
+    backdrop-filter: blur(20px);
+    transition: 0.35s ease;
+    text-align: center;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255,255,255,0.15);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.executive-badge {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #8c8c8c;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.contact-card h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #fff;
+}
+
+.executive-role {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 30px;
+    display: block;
+    font-weight: 500;
+}
+
+.info-group {
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding-top: 25px;
+    text-align: left;
+}
+
+.info-item {
+    margin-bottom: 15px;
+}
+
+.info-item:last-child {
+    margin-bottom: 0;
+}
+
+.info-label {
+    font-size: 11px;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.info-value {
+    font-size: 14px;
+    color: #a1a1a1;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.info-value:hover {
+    color: #fff;
+}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+    .contact-grid { grid-template-columns: 1fr; }
+    .contact-section { padding: 140px 40px 80px; }
+}
+
+@media(max-width:700px){
+    .contact-section { padding: 140px 25px 80px; }
+    nav { padding: 20px; }
+    nav ul { display: none; }
+    .contact-header h1 { font-size: 42px; }
+}
+
+</style>
+</head>
+<body>
+
+<div class="bg"></div>
+<div class="grid"></div>
+
+<nav>
+    <div class="logo">
+        <img src="logo.png" alt="Alphatech Logo">
+        ALPHATECH<span></span>
+    </div>
+
+    <div class="nav-right">
+        <div class="language"></div>
+        <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="page1.html">INVENTIONS</a></li>
+            <li><a href="page2.html">PRODUCTIONS</a></li>
+            <li><a href="page3.html">ABOUT US</a></li>
+            <li class="active"><a href="page4.html">CONTACT</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="contact-section">
+    <div class="container">
+        
+        <div class="contact-header">
+            <h5 id="mini">SECURE COMMUNICATIONS</h5>
+            <h1 id="title">Get in <span>Touch.</span></h1>
+            <p id="desc">
+                Direct lines of communication to the Executive Board of Alphatech Holding for strategic partnerships, technological ventures, and enterprise queries.
+            </p>
+        </div>
+
+        <div class="contact-grid">
+            
+
+                     <div class="contact-card">
+                <span class="executive-badge">Growth & Scale</span>
+                <h3>Cihangir Koca</h3>
+                <span class="executive-role" id="role-cgo">Chief Growth Officer</span>
+                
+                <div class="info-group">
+                    <div class="info-item">
+                        <span class="info-label" id="lbl-phone-2">Direct Line</span>
+                        <a href="tel:+905468860650" class="info-value">+90 546 886 06 50</a>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Secure Email</span>
+                        <a href="mailto:cihangirkoca@gmail.com" class="info-value">cihangirkoca@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-card">
+                <span class="executive-badge">Board Direction</span>
+                <h3>Alp Burak Atalay</h3>
+                <span class="executive-role" id="role-cvo">Chief Vision Officer</span>
+                
+                <div class="info-group">
+                    <div class="info-item">
+                        <span class="info-label" id="lbl-phone-1">Direct Line</span>
+                        <a href="tel:+905431282529" class="info-value">+90 543 128 25 29</a>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Secure Email</span>
+                        <a href="mailto:alpburak.atalay@gmail.com" class="info-value">alpburak.atalay@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+
+            
+
+            <div class="contact-card">
+                <span class="executive-badge">Systems & Tech</span>
+                <h3>Ayaz Bektaş</h3>
+                <span class="executive-role" id="role-cto">Chief Technology Officer</span>
+                
+                <div class="info-group">
+                    <div class="info-item">
+                        <span class="info-label" id="lbl-phone-3">Direct Line</span>
+                        <a href="tel:+905462014810" class="info-value">+90 546 201 48 10</a>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Secure Email</span>
+                        <a href="mailto:ayz.demirmez@gmail.com" class="info-value">ayz.demirmez@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<script>
+const tr = {
+    mini: "GÜVENLİ İLETİŞİM HATLARI",
+    title: `İletişime <span>Geçin.</span>`,
+    desc: "Stratejik ortaklıklar, teknolojik girişimler ve kurumsal talepler için Alphatech Holding Yönetim Kurulu ile doğrudan iletişim kanalları.",
+    roleCvo: "Yönetim Kurulu Başkanı (CVO)",
+    roleCgo: "Büyüme Operasyonları Başkanı (CGO)",
+    roleCto: "Teknoloji Grubu Başkanı (CTO)",
+    lblPhone: "Doğrudan Hat"
+};
+
+const en = {
+    mini: "SECURE COMMUNICATIONS",
+    title: `Get in <span>Touch.</span>`,
+    desc: "Direct lines of communication to the Executive Board of Alphatech Holding for strategic partnerships, technological ventures, and enterprise queries.",
+    roleCvo: "Chief Vision Officer",
+    roleCgo: "Chief Growth Officer",
+    roleCto: "Chief Technology Officer",
+    lblPhone: "Direct Line"
+};
+
+function setLang(lang){
+    const l = (lang === "tr") ? tr : en;
+    
+    document.getElementById("mini").innerHTML = l.mini;
+    document.getElementById("title").innerHTML = l.title;
+    document.getElementById("desc").innerHTML = l.desc;
+    
+    document.getElementById("role-cvo").innerHTML = l.roleCvo;
+    document.getElementById("role-cgo").innerHTML = l.roleCgo;
+    document.getElementById("role-cto").innerHTML = l.roleCto;
+    
+    document.getElementById("lbl-phone-1").innerHTML = l.lblPhone;
+    document.getElementById("lbl-phone-2").innerHTML = l.lblPhone;
+    document.getElementById("lbl-phone-3").innerHTML = l.lblPhone;
+}
+</script>
+
+</body>
+</html>

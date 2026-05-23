@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Inventions - Alphatech Holding</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --bg:#050505;
+    --card:#101010;
+    --soft:#8e8e8e;
+    --line:#1d1d1d;
+    --white:#ffffff;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:white;
+    overflow-x:hidden;
+}
+
+/* BACKGROUND */
+
+.bg{
+    position:fixed;
+    inset:0;
+    z-index:-3;
+
+    background:
+    radial-gradient(circle at top left, rgba(255,255,255,0.04), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(255,255,255,0.03), transparent 30%),
+    #050505;
+}
+
+.grid{
+    position:fixed;
+    inset:0;
+    z-index:-2;
+
+    background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+
+    background-size:40px 40px;
+
+    animation:gridMove 14s linear infinite;
+}
+
+@keyframes gridMove{
+    from{
+        transform:translateY(0);
+    }
+
+    to{
+        transform:translateY(40px);
+    }
+}
+
+/* NAVBAR */
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+
+    width:100%;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:24px 70px;
+
+    background:rgba(0,0,0,0.45);
+    backdrop-filter:blur(18px);
+
+    border-bottom:1px solid rgba(255,255,255,0.05);
+
+    z-index:999;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family:'Orbitron',sans-serif;
+    font-size:28px;
+    letter-spacing:3px;
+    font-weight:700;
+}
+
+.logo img {
+    height: 35px;
+    width: auto;
+    object-fit: contain;
+}
+
+.nav-right{
+    display:flex;
+    align-items:center;
+    gap:40px;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:35px;
+}
+
+nav ul a{
+    text-decoration:none;
+    color:#cfcfcf;
+    font-size:14px;
+    transition:.3s;
+}
+
+nav ul a:hover{
+    color:white;
+}
+
+/* LANGUAGE */
+
+.language{
+    display:flex;
+    gap:10px;
+}
+
+.lang-btn{
+    width:42px;
+    height:42px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    background:#111;
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.lang-btn:hover{
+    background:white;
+    color:black;
+}
+
+/* INVENTIONS HERO SECTION */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:160px 70px 80px;
+}
+
+.section-header {
+    text-align: center;
+    max-width: 800px;
+    margin-bottom: 60px;
+}
+
+.section-header h5 {
+    color: #8c8c8c;
+    letter-spacing: 3px;
+    margin-bottom: 25px;
+    font-size: 13px;
+}
+
+.section-header h1 {
+    font-size: 90px;
+    line-height: 1;
+    margin-bottom: 35px;
+    font-weight: 800;
+}
+
+.section-header h1 span {
+    color: #737373;
+}
+
+.section-header p {
+    max-width: 700px;
+    margin: 0 auto;
+    color: #a1a1a1;
+    line-height: 2;
+    font-size: 18px;
+}
+
+/* INVENTIONS GRID */
+
+.inventions-grid {
+    width: 100%;
+    max-width: 1500px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.invention-card {
+    background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 30px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    backdrop-filter: blur(20px);
+    transition: transform 0.35s, border-color 0.35s;
+}
+
+.invention-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255,255,255,0.15);
+}
+
+.card-top .patent-badge {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    color: #8c8c8c;
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 6px 14px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    background: #111;
+}
+
+.card-top h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.card-top p {
+    color: #999;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.card-bottom {
+    margin-top: 35px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tech-tag {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 13px;
+    color: #737373;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.view-details {
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.view-details:hover {
+    color: #8c8c8c;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1200px){
+    .inventions-grid {
+        grid-template-columns: 1fr;
+    }
+    .section-header h1 {
+        font-size: 54px;
+    }
+    .hero {
+        padding: 140px 40px 80px;
+    }
+}
+
+@media(max-width:700px){
+    .hero {
+        padding: 140px 25px 80px;
+    }
+    nav{
+        padding:20px;
+    }
+    nav ul{
+        display:none;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<div class="bg"></div>
+<div class="grid"></div>
+
+<nav>
+
+    <div class="logo">
+        <img src="logo.png" alt="Alphatech Logo">
+        ALPHATECH
+    </div>
+
+    <div class="nav-right">
+
+        <div class="language">
+            
+        </div>
+
+        <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="page1.html" style="color: white; font-weight: 600;">INVENTIONS</a></li>
+            <li><a href="page2.html">PRODUCTIONS</a></li>
+            <li><a href="page3.html">ABOUT US</a></li>
+            <li><a href="page4.html">CONTACT</a></li>
+        </ul>
+
+    </div>
+
+</nav>
+
+<section class="hero">
+
+    <div class="section-header">
+        <h5 id="mini">PATENTED TECHNOLOGIES</h5>
+        <h1 id="title">Our <span>Inventions.</span></h1>
+        <p id="desc">
+            Discover the proprietary breakthroughs and pioneering mechanisms developed inside Alphatech laboratories, pushing the boundaries of autonomous engineering.
+        </p>
+    </div>
+
+    <div class="inventions-grid">
+
+        <div class="invention-card">
+            <div class="card-top">
+                <span class="patent-badge">PATENT P-492B</span>
+                <h3 id="card1-title">AlphaCore Neural Link</h3>
+                <p id="card1-desc">The world's first hardware-level synaptic bridge allowing sub-millisecond data routing between decentralised AI units and microchips.</p>
+            </div>
+            <div class="card-bottom">
+                <span class="tech-tag">NEURAL HW</span>
+                <a href="#" class="view-details" id="detail-btn1">Specs →</a>
+            </div>
+        </div>
+
+        <div class="invention-card">
+            <div class="card-top">
+                <span class="patent-badge">PATENT P-104A</span>
+                <h3 id="card2-title">Quantum Shield Node</h3>
+                <p id="card2-desc">A cryptographic hardware module leveraging dynamic molecular mesh patterns to isolate and protect edge systems from breach attempts.</p>
+            </div>
+            <div class="card-bottom">
+                <span class="tech-tag">CYBER SEC</span>
+                <a href="#" class="view-details" id="detail-btn2">Specs →</a>
+            </div>
+        </div>
+
+        <div class="invention-card">
+            <div class="card-top">
+                <span class="patent-badge">PATENT P-882X</span>
+                <h3 id="card3-title">OmniDrive Automata</h3>
+                <p id="card3-desc">An intelligent kinetic algorithm integrated directly into multilayered motor drivers, enabling self-correcting industrial motions.</p>
+            </div>
+            <div class="card-bottom">
+                <span class="tech-tag">ROBOTICS</span>
+                <a href="#" class="view-details" id="detail-btn3">Specs →</a>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<script>
+
+const tr = {
+    mini: "PATENTLİ TEKNOLOJİLER",
+    title: "Buluşlarımız<span>.</span>",
+    desc: "Alphatech laboratuvarlarında geliştirilen, otonom mühendisliğin sınırlarını zorlayan tescilli buluşlarımızı ve öncü mekanizmalarımızı keşfedin.",
+    
+    card1Title: "AlphaCore Nöral Link",
+    card1Desc: "Merkeziyetsiz yapay zeka birimleri ile mikroçipler arasında milisaniyenin altında veri yönlendirmesi sağlayan dünyanın ilk donanım seviyesindeki sinaptik köprüsü.",
+    
+    card2Title: "Kuantum Kalkan Düğümü",
+    card2Desc: "Uç sistemleri yetkisiz erişim girişimlerinden izole etmek ve korumak için dinamik moleküler ağ modellerinden yararlanan kriptografik donanım modülü.",
+    
+    card3Title: "OmniDrive Otomasyonu",
+    card3Desc: "Çok katmanlı motor sürücülerine doğrudan entegre edilmiş, kendi kendini düzelten endüstriyel hareketler sağlayan akıllı kinetik algoritma.",
+    
+    details: "Detaylar →"
+};
+
+const en = {
+    mini: "PATENTED TECHNOLOGIES",
+    title: "Our <span>Inventions.</span>",
+    desc: "Discover the proprietary breakthroughs and pioneering mechanisms developed inside Alphatech laboratories, pushing the boundaries of autonomous engineering.",
+    
+    card1Title: "AlphaCore Neural Link",
+    card1Desc: "The world's first hardware-level synaptic bridge allowing sub-millisecond data routing between decentralised AI units and microchips.",
+    
+    card2Title: "Quantum Shield Node",
+    card2Desc: "A cryptographic hardware module leveraging dynamic molecular mesh patterns to isolate and protect edge systems from breach attempts.",
+    
+    card3Title: "OmniDrive Automata",
+    card3Desc: "An intelligent kinetic algorithm integrated directly into multilayered motor drivers, enabling self-correcting industrial motions.",
+    
+    details: "Specs →"
+};
+
+function setLang(lang){
+    const selected = (lang === "en") ? en : tr;
+    
+    document.getElementById("mini").innerHTML = selected.mini;
+    document.getElementById("title").innerHTML = selected.title;
+    document.getElementById("desc").innerHTML = selected.desc;
+    
+    document.getElementById("card1-title").innerHTML = selected.card1Title;
+    document.getElementById("card1-desc").innerHTML = selected.card1Desc;
+    
+    document.getElementById("card2-title").innerHTML = selected.card2Title;
+    document.getElementById("card2-desc").innerHTML = selected.card2Desc;
+    
+    document.getElementById("card3-title").innerHTML = selected.card3Title;
+    document.getElementById("card3-desc").innerHTML = selected.card3Desc;
+    
+    document.getElementById("detail-btn1").innerHTML = selected.details;
+    document.getElementById("detail-btn2").innerHTML = selected.details;
+    document.getElementById("detail-btn3").innerHTML = selected.details;
+}
+
+// Tarayıcı diline göre otomatik algılama
+const userLang = navigator.language || navigator.userLanguage;
+if (userLang.startsWith("en")) {
+    setLang("tr");
+} else {
+    setLang("en");
+}
+
+</script>
+
+</body>
+</html>

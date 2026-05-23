@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Productions - Alphatech Holding</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --bg:#050505;
+    --card:#101010;
+    --soft:#8e8e8e;
+    --line:#1d1d1d;
+    --white:#ffffff;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:white;
+    overflow-x:hidden;
+}
+
+/* BACKGROUND */
+.bg{
+    position:fixed;
+    inset:0;
+    z-index:-3;
+    background:
+    radial-gradient(circle at top left, rgba(255,255,255,0.04), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(255,255,255,0.03), transparent 30%),
+    #050505;
+}
+
+.grid{
+    position:fixed;
+    inset:0;
+    z-index:-2;
+    background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size:40px 40px;
+    animation:gridMove 14s linear infinite;
+}
+
+@keyframes gridMove{
+    from{ transform:translateY(0); }
+    to{ transform:translateY(40px); }
+}
+
+/* NAVBAR */
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:24px 70px;
+    background:rgba(0,0,0,0.45);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(255,255,255,0.05);
+    z-index:999;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family:'Orbitron',sans-serif;
+    font-size:28px;
+    letter-spacing:3px;
+    font-weight:700;
+}
+
+.logo img {
+    height: 35px;
+    width: auto;
+    object-fit: contain;
+}
+
+.logo span{ color:#8d8d8d; }
+.nav-right{ display:flex; align-items:center; gap:40px; }
+nav ul{ display:flex; list-style:none; gap:35px; }
+nav ul a{ text-decoration:none; color:#cfcfcf; font-size:14px; transition:.3s; }
+nav ul a:hover{ color:white; }
+nav ul li.active a{ color: white; font-weight: 600; }
+
+/* CONTENT WRAPPER */
+.prod-section {
+    min-height: 100vh;
+    padding: 140px 70px 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* HEADER */
+.prod-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.prod-header h5 {
+    color: #8c8c8c;
+    letter-spacing: 3px;
+    margin-bottom: 25px;
+    font-size: 13px;
+}
+
+.prod-header h1 {
+    font-size: 64px;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 30px;
+}
+
+.prod-header h1 span { color: #737373; }
+
+.prod-header p {
+    max-width: 800px;
+    margin: 0 auto;
+    color: #a1a1a1;
+    line-height: 2;
+    font-size: 18px;
+}
+
+/* PRODUCTIONS GRID */
+.prod-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.prod-card {
+    background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 24px;
+    padding: 40px;
+    backdrop-filter: blur(20px);
+    transition: 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.prod-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255,255,255,0.15);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.prod-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.badge {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+    padding: 6px 14px;
+    border-radius: 30px;
+    background: rgba(255,255,255,0.05);
+    color: #8c8c8c;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.status {
+    font-size: 12px;
+    color: #fff;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.status::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #00ff66; /* Aktif/Canlı projeler için yeşil nokta */
+}
+
+.status.sol-dev::before {
+    background: #ffcc00; /* Geliştirme aşaması için sarı nokta */
+}
+
+.prod-card h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 24px;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.prod-card p {
+    color: #999;
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    flex-grow: 1;
+}
+
+/* PROJECT STEPS INDICATOR */
+.prod-steps {
+    display: flex;
+    gap: 8px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding-top: 20px;
+}
+
+.step-node {
+    flex: 1;
+    height: 4px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    position: relative;
+}
+
+.step-node.fill {
+    background: #fff;
+}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+    .prod-grid { grid-template-columns: 1fr; }
+    .prod-section { padding: 140px 40px 80px; }
+}
+
+@media(max-width:700px){
+    .prod-section { padding: 140px 25px 80px; }
+    nav { padding: 20px; }
+    nav ul { display: none; }
+    .prod-header h1 { font-size: 42px; }
+}
+
+</style>
+</head>
+<body>
+
+<div class="bg"></div>
+<div class="grid"></div>
+
+<nav>
+    <div class="logo">
+        <img src="logo.png" alt="Alphatech Logo">
+        ALPHATECH<span></span>
+    </div>
+
+    <div class="nav-right">
+        <div class="language"></div>
+        <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="page1.html">INVENTIONS</a></li>
+            <li class="active"><a href="page2.html">PRODUCTIONS</a></li>
+            <li><a href="page3.html">ABOUT US</a></li>
+            <li><a href="page4.html">CONTACT</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="prod-section">
+    <div class="container">
+        
+        <div class="prod-header">
+            <h5 id="mini">ENGINEERING OUTPUTS</h5>
+            <h1 id="title">Our <span>Productions.</span></h1>
+            <p id="desc">
+                Explore the active ecosystem of industrial automation, embedded hardware, cyber defense architectures, and neural network engines deployed by Alphatech Holding.
+            </p>
+        </div>
+
+        <div class="prod-grid">
+            
+            <div class="prod-card">
+                <div>
+                    <div class="prod-meta">
+                        <span class="badge" id="p1-badge">HARDWARE / DEFENSE</span>
+                        <span class="status" id="p1-status">Active Deployment</span>
+                    </div>
+                    <h3 id="p1-title">Aegis Core v4</h3>
+                    <p id="p1-desc">A multilayer, high-frequency encrypted embedded hardware module built for heavy-duty military and commercial system shielding. Designed by our Defense and Hardware sectors.</p>
+                </div>
+                <div class="prod-steps">
+                    <div class="step-node fill"></div>
+                    <div class="step-node fill"></div>
+                    <div class="step-node fill"></div>
+                    <div class="step-node fill"></div>
+                    <div class="step-node fill"></div>
+                    <div class="step-node fill"></div>
+                </div>
+            </div>
+
+            <div class="prod-card">
+                <div>
+                    <div class="prod-meta">
+                        <span class="badge" id="p2-badge">SOFTWARE / AI</span>
+                        <span class="status" id="p2-status">Active Deployment</span>
+                    </div>
+                    <h3 id="p2-title">Nexus Grid OS</h3>
+                    <p id="p2-desc">A decentralized, autonomous machine-learning infrastructure tailored to handle real-time automated data and communications syncing safely across complex enterprise networks.</p>
+                </div>
+                <div class="prod-steps">
+                    <div class="step-node fill"></div>
+                    <div class="step-node fill"></div>
+                    <div class="step-node fill"></div>
+                    <div class="step-node fill"></div>
+                    <div class="step-node fill"></div>
+                    <div class="step-node fill"></div>
+                </div>
+            </div>
+
+            <div class="prod-card">
+                <div>
+                    <div class="prod-meta">
+                        <span class="badge" id="p3-badge">AUTOMATION / R&D</span>
+                        <span class="status sol-dev" id="p3-status">In Development</span>
+                    </div>
+                    <h3 id="p3-title">Chronos Sync</h3>
+                    <p id="p3-desc">An advanced industrial automation node currently undergoing engineering optimization. It targets ultra-low latency PLC sync protocols in smart production assembly lines.</p>
+                </div>
+                <div class="prod-steps">
+                    <div class="step-node fill"></div>
+                    <div class="step-node fill"></div>
+                    <div class="step-node fill"></div>
+                    <div class="step-node fill"></div>
+                    <div class="step-node"></div>
+                    <div class="step-node"></div>
+                </div>
+            </div>
+
+            <div class="prod-card">
+                <div>
+                    <div class="prod-meta">
+                        <span class="badge" id="p4-badge">IT / COMMUNICATION</span>
+                        <span class="status" id="p4-status">Active Deployment</span>
+                    </div>
+                    <h3 id="p4-title">Cipher Link</h3>
+                    <p id="p4-desc">An end-to-end encrypted high-speed routing software protocol developed to safeguard critical corporate communications against complex external signal intrusions.</p>
+                </div>
+                <div class="prod-steps">
+                    <div class="step-node fill"></div>
+                    <div class="step-node fill"></div>
+                    <div class="step-node fill"></div>
+                    <div class="step-node fill"></div>
+                    <div class="step-node fill"></div>
+                    <div class="step-node fill"></div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<script>
+const tr = {
+    mini: "MÜHENDİSLİK ÇIKTILARI",
+    title: `Üretimlerimiz <span>& Projelerimiz.</span>`,
+    desc: "Alphatech Holding tarafından hayata geçirilen endüstriyel otomasyon, gömülü donanım, siber savunma mimarileri ve yapay zeka ağlarının aktif ekosistemini inceleyin.",
+    
+    p1Badge: "DONANIM / SAVUNMA",
+    p1Status: "Aktif Dağıtım",
+    p1Title: "Aegis Core v4",
+    p1Desc: "Askeri ve endüstriyel sistemlerin korunması için geliştirilmiş, çok katmanlı, yüksek frekans korumalı şifreli gömülü donanım modülü. Savunma ve Donanım departmanlarımız tarafından tasarlanmıştır.",
+    
+    p2Badge: "YAZILIM / YAPAY ZEKA",
+    p2Status: "Aktif Dağıtım",
+    p2Title: "Nexus Grid OS",
+    p2Desc: "Karmaşık kurumsal ağlar genelinde gerçek zamanlı otomatik veri ve iletişim senkronizasyonunu güvenli bir şekilde yönetmek için uyarlanmış merkeziyetsiz, otonom makine öğrenimi altyapısı.",
+    
+    p3Badge: "OTOMASYON / AR-GE",
+    p3Status: "Geliştirme Aşamasında",
+    p3Title: "Chronos Sync",
+    p3Desc: "Şu anda teknik tasarımı ve optimizasyon süreçleri devam eden gelişmiş endüstriyel otomasyon düğümü. Akıllı üretim hatlarında ultra düşük gecikmeli PLC senkronizasyon protokollerini hedefler.",
+    
+    p4Badge: "BİLGİ VE İLETİŞİM",
+    p4Status: "Aktif Dağıtım",
+    p4Title: "Cipher Link",
+    p4Desc: "Kritik kurumsal veri iletişimini dış sinyal müdahalelerine karşı korumak amacıyla uçtan uca şifreli ve yüksek hızlı yönlendirme sağlayan yazılım protokolü."
+};
+
+const en = {
+    mini: "ENGINEERING OUTPUTS",
+    title: `Our <span>Productions.</span>`,
+    desc: "Explore the active ecosystem of industrial automation, embedded hardware, cyber defense architectures, and neural network engines deployed by Alphatech Holding.",
+    
+    p1Badge: "HARDWARE / DEFENSE",
+    p1Status: "Active Deployment",
+    p1Title: "Aegis Core v4",
+    p1Desc: "A multilayer, high-frequency encrypted embedded hardware module built for heavy-duty military and commercial system shielding. Designed by our Defense and Hardware sectors.",
+    
+    p2Badge: "SOFTWARE / AI",
+    p2Status: "Active Deployment",
+    p2Title: "Nexus Grid OS",
+    p2Desc: "A decentralized, autonomous machine-learning infrastructure tailored to handle real-time automated data and communications syncing safely across complex enterprise networks.",
+    
+    p3Badge: "AUTOMATION / R&D",
+    p3Status: "In Development",
+    p3Title: "Chronos Sync",
+    p3Desc: "An advanced industrial automation node currently undergoing engineering optimization. It targets ultra-low latency PLC sync protocols in smart production assembly lines.",
+    
+    p4Badge: "IT / COMMUNICATION",
+    p4Status: "Active Deployment",
+    p4Title: "Cipher Link",
+    p4Desc: "An end-to-end encrypted high-speed routing software protocol developed to safeguard critical corporate communications against complex external signal intrusions."
+};
+
+function setLang(lang){
+    const l = (lang === "tr") ? tr : en;
+    
+    document.getElementById("mini").innerHTML = l.mini;
+    document.getElementById("title").innerHTML = l.title;
+    document.getElementById("desc").innerHTML = l.desc;
+    
+    document.getElementById("p1-badge").innerHTML = l.p1Badge;
+    document.getElementById("p1-status").innerHTML = l.p1Status;
+    document.getElementById("p1-title").innerHTML = l.p1Title;
+    document.getElementById("p1-desc").innerHTML = l.p1Desc;
+    
+    document.getElementById("p2-badge").innerHTML = l.p2Badge;
+    document.getElementById("p2-status").innerHTML = l.p2Status;
+    document.getElementById("p2-title").innerHTML = l.p2Title;
+    document.getElementById("p2-desc").innerHTML = l.p2Desc;
+    
+    document.getElementById("p3-badge").innerHTML = l.p3Badge;
+    document.getElementById("p3-status").innerHTML = l.p3Status;
+    document.getElementById("p3-title").innerHTML = l.p3Title;
+    document.getElementById("p3-desc").innerHTML = l.p3Desc;
+    
+    document.getElementById("p4-badge").innerHTML = l.p4Badge;
+    document.getElementById("p4-status").innerHTML = l.p4Status;
+    document.getElementById("p4-title").innerHTML = l.p4Title;
+    document.getElementById("p4-desc").innerHTML = l.p4Desc;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>About Us - Alphatech Holding</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --bg:#050505;
+    --card:#101010;
+    --soft:#8e8e8e;
+    --line:#1d1d1d;
+    --white:#ffffff;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:white;
+    overflow-x:hidden;
+}
+
+/* BACKGROUND */
+.bg{
+    position:fixed;
+    inset:0;
+    z-index:-3;
+    background:
+    radial-gradient(circle at top left, rgba(255,255,255,0.04), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(255,255,255,0.03), transparent 30%),
+    #050505;
+}
+
+.grid{
+    position:fixed;
+    inset:0;
+    z-index:-2;
+    background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size:40px 40px;
+    animation:gridMove 14s linear infinite;
+}
+
+@keyframes gridMove{
+    from{ transform:translateY(0); }
+    to{ transform:translateY(40px); }
+}
+
+/* NAVBAR */
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:24px 70px;
+    background:rgba(0,0,0,0.45);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(255,255,255,0.05);
+    z-index:999;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family:'Orbitron',sans-serif;
+    font-size:28px;
+    letter-spacing:3px;
+    font-weight:700;
+}
+
+.logo img {
+    height: 35px;
+    width: auto;
+    object-fit: contain;
+}
+
+.logo span{ color:#8d8d8d; }
+.nav-right{ display:flex; align-items:center; gap:40px; }
+nav ul{ display:flex; list-style:none; gap:35px; }
+nav ul a{ text-decoration:none; color:#cfcfcf; font-size:14px; transition:.3s; }
+nav ul a:hover{ color:white; }
+nav ul li.active a{ color: white; font-weight: 600; }
+
+/* CONTENT WRAPPER */
+.about-section {
+    min-height: 100vh;
+    padding: 140px 70px 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* HEADER */
+.about-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.about-header h5 {
+    color: #8c8c8c;
+    letter-spacing: 3px;
+    margin-bottom: 25px;
+    font-size: 13px;
+}
+
+.about-header h1 {
+    font-size: 64px;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 30px;
+}
+
+.about-header h1 span { color: #737373; }
+
+.about-header p {
+    max-width: 800px;
+    margin: 0 auto;
+    color: #a1a1a1;
+    line-height: 2;
+    font-size: 18px;
+}
+
+.section-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 20px;
+    letter-spacing: 2px;
+    margin: 60px 0 35px 0;
+    color: #fff;
+    border-left: 3px solid #fff;
+    padding-left: 15px;
+    text-transform: uppercase;
+}
+
+/* ORGANIZATIONAL CHART ELEMENTS */
+.org-row {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.org-card {
+    background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 20px;
+    padding: 30px;
+    min-width: 340px;
+    flex: 1;
+    backdrop-filter: blur(20px);
+    transition: .35s;
+}
+
+.org-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255,255,255,0.15);
+}
+
+.org-card.cvo-card {
+    border-color: rgba(255, 255, 255, 0.2);
+    max-width: 450px;
+}
+
+.org-card h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 18px;
+    letter-spacing: 2px;
+    color: #fff;
+    margin-bottom: 4px;
+}
+
+.org-card .role-sub {
+    font-size: 12px;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.org-card .leader-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    display: block;
+}
+
+.dept-list {
+    margin-top: 15px;
+    list-style: none;
+}
+
+.dept-list li {
+    font-size: 14px;
+    color: #a1a1a1;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.02);
+}
+
+.dept-list li strong {
+    color: #fff;
+    font-weight: 500;
+}
+
+/* ACCORDION (CHARTER) ELEMENTS */
+.charter-item {
+    background: #0d0d0d;
+    border: 1px solid rgba(255,255,255,0.05);
+    margin-bottom: 12px;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.charter-item:hover {
+    border-color: rgba(255,255,255,0.15);
+}
+
+.charter-title {
+    padding: 20px 25px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+}
+
+.charter-title span {
+    font-size: 18px;
+    color: #666;
+}
+
+.charter-content {
+    padding: 0 25px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+    color: #a1a1a1;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.charter-item.active .charter-content {
+    padding: 0 25px 25px 25px;
+    max-height: 800px;
+}
+
+/* RESPONSIVE */
+@media(max-width:1200px){
+    .about-section { padding: 140px 40px 80px; }
+    .org-card { min-width: 100%; }
+}
+
+@media(max-width:700px){
+    .about-section { padding: 140px 25px 80px; }
+    nav { padding: 20px; }
+    nav ul { display: none; }
+    .about-header h1 { font-size: 42px; }
+}
+
+</style>
+</head>
+<body>
+
+<div class="bg"></div>
+<div class="grid"></div>
+
+<nav>
+    <div class="logo">
+        <img src="logo.png" alt="Alphatech Logo">
+        ALPHATECH<span></span>
+    </div>
+
+    <div class="nav-right">
+        <div class="language"></div>
+        <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="page1.html">INVENTIONS</a></li>
+            <li><a href="page2.html">PRODUCTIONS</a></li>
+            <li class="active"><a href="page3.html">ABOUT US</a></li>
+            <li><a href="page4.html">CONTACT</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="about-section">
+    <div class="container">
+        
+        <div class="about-header">
+            <h5 id="mini">ALPHATECH HOLDING</h5>
+            <h1 id="title">Corporate <span>Structure.</span></h1>
+            <p id="desc">
+                Discover the legal framework, fundamental constitution, and futuristic operational hierarchy that drives global engineering at Alphatech Holding.
+            </p>
+        </div>
+
+        <h2 class="section-title" id="sec-title-org">ORGANIZATION CHART</h2>
+        
+        <div class="org-row">
+            <div class="org-card cvo-card">
+                <h3 id="cvo-title">CHIEF VISION OFFICER</h3>
+                <span class="role-sub" id="cvo-sub">Chairman of the Board</span>
+                <span class="leader-name">Alp Burak Atalay</span>
+                <ul class="dept-list">
+                    <li><strong id="d-savunma">Defense Dept:</strong> Cybersecurity & Critical Protection</li>
+                    <li><strong id="d-yazilim">Software Dept:</strong> Core Infrastructures & Dev</li>
+                    <li><strong id="d-donanim">Hardware Dept:</strong> Physical Products & Embedded Systems</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="org-row">
+            <div class="org-card">
+                <h3 id="cgo-title">CHIEF GROWTH OFFICER</h3>
+                <span class="role-sub" id="cgo-sub">Growth & Expansion</span>
+                <span class="leader-name">Cihangir Koca</span>
+                <ul class="dept-list">
+                    <li id="d-ticari">Commercial Assistance (Analysis & Models)</li>
+                    <li id="d-satis">Sales Department (Client Relations)</li>
+                    <li id="d-lojistik">Logistics Department (Distribution & Operations)</li>
+                    <li id="d-egitim">Education Department (Internal Growth)</li>
+                </ul>
+            </div>
+
+            <div class="org-card">
+                <h3 id="cto-title">CHIEF TECHNOLOGY OFFICER</h3>
+                <span class="role-sub" id="cto-sub">Technical Infrastructure</span>
+                <span class="leader-name">Ayaz Bektaş</span>
+                <ul class="dept-list">
+                    <li id="d-arge">R&D Department (Innovation & Tech Dev)</li>
+                    <li id="d-tasarim">Product Design Department (UX/UI & Modeling)</li>
+                    <li id="d-bilgi">Information & Comm. Dept (IT & Data Management)</li>
+                </ul>
+            </div>
+        </div>
+
+
+        <h2 class="section-title" id="sec-title-charter">ARTICLES OF ASSOCIATION</h2>
+
+        <div class="charter-wrapper">
+            
+            <div class="charter-item">
+                <div class="charter-title"><span id="m1-t">1. ESTABLISHMENT & PARTIES</span> <span>+</span></div>
+                <div class="charter-content" id="m1-c">
+                    These Articles of Association have been drawn up to determine the principles of establishment, management, and operation of the company operating under the name ALPHATECH Holding. The company was officially founded on July 13, 2025.
+                </div>
+            </div>
+
+            <div class="charter-item">
+                <div class="charter-title"><span id="m2-t">2. COMPANY TITLE & PURPOSE</span> <span>+</span></div>
+                <div class="charter-content" id="m2-c">
+                    The official title of the company is ALPHATECH Holding. The primary objectives are: developing software frameworks, producing electronic hardware systems, executing advanced technological R&D, implementing innovative training networks, and deploying high-tier industrial solutions.
+                </div>
+            </div>
+
+            <div class="charter-item">
+                <div class="charter-title"><span id="m3-t">3. FIELDS OF ACTIVITY</span> <span>+</span></div>
+                <div class="charter-content" id="m3-c">
+                    The Holding operates dynamically across these sectors: Software technologies, hardware design, advanced R&D, corporate educational structures, UI/UX product design, commercial operations, global logistics, info-communication systems, and critical cyber defense platforms.
+                </div>
+            </div>
+
+            <div class="charter-item">
+                <div class="charter-title"><span id="m4-t">4. COMPANY MANAGEMENT</span> <span>+</span></div>
+                <div class="charter-content" id="m4-c">
+                    <strong>4.1 Board of Directors:</strong> The supreme decision-making body of the company. Strategic investments, funding allocations, and macro plans are approved here.<br>
+                    <strong>4.2 Chairman:</strong> Holds the executive power to make urgent and critical strategic decisions when necessary, subject to subsequent Board approval.
+                </div>
+            </div>
+
+            <div class="charter-item">
+                <div class="charter-title"><span id="m5-t">5. EXECUTIVE MANAGEMENT</span> <span>+</span></div>
+                <div class="charter-content" id="m5-c">
+                    <strong>5.1 CVO (Chief Vision Officer):</strong> Sets the long-term vision and macro direction.<br>
+                    <strong>5.2 CGO (Chief Growth Officer):</strong> Responsible for scaling commercial assets, pipelines, and market sales.<br>
+                    <strong>5.3 CTO (Chief Technology Officer):</strong> Commands software, hardware architecture, and overall technical development.
+                </div>
+            </div>
+
+            <div class="charter-item">
+                <div class="charter-title"><span id="m6-t">6. CAPITAL & FINANCIAL PROVISIONS</span> <span>+</span></div>
+                <div class="charter-content" id="m6-c">
+                    6.1 Company capital and financial resources are fully managed under Board directives.<br>
+                    6.2 Board approval is strictly mandatory for all large-scale expenditures.<br>
+                    6.3 Every engineering project is governed by its own isolated budget and expenditure ceiling.
+                </div>
+            </div>
+
+            <div class="charter-item">
+                <div class="charter-title"><span id="m7-t">7. ORGANIZATIONAL STRUCTURE</span> <span>+</span></div>
+                <div class="charter-content" id="m7-c">
+                    The organization operates using a hybrid system based on functional departments and cross-functional project teams. Departments work autonomously but collaborate closely during cross-platform product cycles. Core sectors: R&D, Education, Hardware, Software, Product Design, Commercial Support, Sales, Logistics, Information, and Defense systems.
+                </div>
+            </div>
+
+            <div class="charter-item">
+                <div class="charter-title"><span id="m8-t">8. PROJECT LIFECYCLE</span> <span>+</span></div>
+                <div class="charter-content" id="m8-c">
+                    Projects systematically proceed through these gates: Idea Conceptualization → Formal Approval → Engineering/Technical Design → Production & Dev → Threat & Quality Testing → Marketing & Launch. No asset or resource can be allocated without explicit project validation.
+                </div>
+            </div>
+
+            <div class="charter-item">
+                <div class="charter-title"><span id="m9-t">9. CONFIDENTIALITY & SECURITY</span> <span>+</span></div>
+                <div class="charter-content" id="m9-c">
+                    All internal architectures, databases, and intellectual properties are strictly confidential. Continuous data protection and systemic defense perimeters are heavily maintained by the Defense and Information-Communication departments.
+                </div>
+                </div>
+            </div>
+
+            <div class="charter-item">
+                <div class="charter-title"><span id="m10-t">10. FINAL CLAUSE</span> <span>+</span></div>
+                <div class="charter-content" id="m10-c">
+                    This foundational charter serves as the primary governing constitution of ALPHATECH Holding and is legally binding across all corporate actions. It can only be amended by an official resolution of the Board of Directors.
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<script>
+// Akordeon Açılış/Kapanış Algoritması
+document.querySelectorAll('.charter-title').forEach(titleItem => {
+    titleItem.addEventListener('click', () => {
+        const parentElement = titleItem.parentElement;
+        parentElement.classList.toggle('active');
+        
+        const toggleIndicator = titleItem.querySelector('span:last-child');
+        if(parentElement.classList.contains('active')) {
+            toggleIndicator.textContent = "−";
+        } else {
+            toggleIndicator.textContent = "+";
+        }
+    });
+});
+
+// Çift Dil Entegrasyon Altyapısı
+const tr = {
+    mini: "ALPHATECH HOLDİNG",
+    title: `Kurumsal <span>Yapı.</span>`,
+    desc: "Alphatech Holding bünyesindeki küresel mühendislik süreçlerine yön veren yasal çerçeveyi, temel ana sözleşmeyi ve fütüristik operasyonel hiyerarşiyi keşfedin.",
+    secTitleOrg: "ORGANİZASYON ŞEMASI",
+    secTitleCharter: "HOLDİNG ANA SÖZLEŞMESİ",
+    
+    cvoTitle: "YÖNETİM KURULU BAŞKANI (CVO)",
+    cvoSub: "Strateji ve Kritik Sistemler Üst Yetkili",
+    dSavunma: "Savunma Departmanı:",
+    dYazilim: "Yazılım Departmanı:",
+    dDonanim: "Donanım Departmanı:",
+    
+    cgoTitle: "CHIEF GROWTH OFFICER (CGO)",
+    cgoSub: "Büyüme ve Ticari Genişleme Yönetimi",
+    dTicari: "Ticari Yardım Departmanı (İş Modeli & Analiz)",
+    dSatis: "Satış Departmanı (Müşteri İlişkileri)",
+    dLojistik: "Lojistik Departmanı (Dağıtım & Operasyon)",
+    dEgitim: "Eğitim Departmanı (Şirket İçi Gelişim)",
+    
+    ctoTitle: "CHIEF TECHNOLOGY OFFICER (CTO)",
+    ctoSub: "Teknik Altyapı ve Operasyon Yönetimi",
+    dArge: "Ar-Ge Departmanı (Teknoloji Geliştirme & İnovasyon)",
+    dTasarim: "Ürün Tasarımı Departmanı (UX/UI & Tasarım)",
+    dBilgi: "Bilgi ve İletişim Departmanı (IT Altyapısı & Veri)",
+    
+    m1T: "1. TARAF VE KURULUŞ",
+    m1C: "İşbu Ana Sözleşme, ALPHATECH Holding adı altında faaliyet gösterecek şirketin kuruluş, yönetim ve işleyiş esaslarını belirlemek amacıyla düzenlenmiştir. Şirket, 13 Temmuz 2025 tarihinde kurulmuştur.",
+    m2T: "2. ŞİRKETİN UNVANI VE AMACI",
+    m2C: "Şirketin unvanı ALPHATECH Holding’dir. Şirketin amacı; Yazılım geliştirmek, donanım ve elektronik sistemler üretmek, teknolojik Ar-Ge faaliyetleri yürütmek, eğitim ve inovasyon projeleri geliştirmek, ticari ve endüstriyel teknoloji çözümleri üretmektir. Şirket, teknoloji odaklı bir holding yapısı içinde faaliyet gösterir.",
+    m3T: "3. FAALİYET ALANLARI",
+    m3C: "Şirket aşağıdaki alanlarda faaliyet gösterir: Yazılım teknolojileri, donanım ve elektronik sistemler, Ar-Ge ve inovasyon, eğitim sistemleri, ürün tasarımı ve geliştirme, ticari faaliyetler ve satış, lojistik ve operasyon, bilgi teknolojileri ve iletişim sistemleri, siber güvenlik ve savunma sistemleri.",
+    m4T: "4. ŞİRKET YÖNETMİ",
+    m4C: "<strong>4.1 Yönetim Kurulu:</strong> Şirketin en üst karar organı Yönetim Kuruludur. Stratejik kararlar, yatırım kararları ve büyük ölçekli planlamalar Yönetim Kurulu tarafından alınır.<br><strong>4.2 Yönetim Kurulu Başkanı:</strong> Gerekli durumlarda acil ve stratejik karar alma yetkisine sahiptir. Bu kararlar daha sonra Yönetim Kurulu onayına sunulur.",
+    m5T: "5. ÜST YÖNETİM",
+    m5C: "<strong>5.1 CVO (Chief Vision Officer):</strong> Şirketin uzun vadeli vizyonunu ve stratejik yönünü belirler.<br><strong>5.2 CGO (Chief Growth Officer):</strong> Şirketin büyüme, satış ve ticari genişleme süreçlerinden sorumludur.<br><strong>5.3 CTO (Chief Technology Officer):</strong> Yazılım, donanım ve teknik altyapı sistemlerinden sorumludur.",
+    m6T: "6. SERMAYE VE MALİ HÜKÜMLER",
+    m6C: "6.1 Şirket sermayesi ve finansal kaynakları Yönetim Kurulu kararlarıyla yönetilir.<br>6.2 Tüm büyük ölçekli harcamalar için Yönetim Kurulu onayı zorunludur.<br>6.3 Her proje için ayrı bütçe ve harcama limiti belirlenir.",
+    m7T: "7. ORGANİZASYON YAPISI",
+    m7C: "Şirket, departman ve proje bazlı çalışma sistemi ile faaliyet gösterir. Departmanlar bağımsız çalışır ancak projelerde ortak hareket eder. Departmanlar: AR-GE, Eğitim, Donanım, Yazılım, Ürün Tasarımı, Ticari Yardım, Satış, Lojistik, Bilgi ve İletişim, Savunma.",
+    m8T: "8. PROJE SİSTEMİ",
+    m8C: "Projeler aşağıdaki aşamalardan oluşur: Fikir geliştirme → Onay süreci → Teknik tasarım → Üretim / geliştirme → Test süreci → Pazarlama ve satış. Proje onayı olmadan kaynak kullanımı yapılamaz. Tüm projeler CVO onayı ile başlatılır.",
+    m9T: "9. GİZLİLİK VE GÜVENLİK",
+    m9C: "Şirket içi bilgiler gizlidir. Veri güvenliği ve sistem koruması Savunma ve Bilgi-İletişim departmanlarının sorumluluğundadır.",
+    m10T: "10. SON HÜKÜM",
+    m10C: "İşbu Ana Sözleşme, ALPHATECH Holding’in temel kuruluş belgesi olup tüm faaliyetlerde bağlayıcıdır. Yönetim Kurulu kararı ile değiştirilebilir."
+};
+
+const en = {
+    mini: "ALPHATECH HOLDING",
+    title: `Corporate <span>Structure.</span>`,
+    desc: "Discover the legal framework, fundamental constitution, and futuristic operational hierarchy that drives global engineering at Alphatech Holding.",
+    secTitleOrg: "ORGANIZATION CHART",
+    secTitleCharter: "ARTICLES OF ASSOCIATION",
+    
+    cvoTitle: "CHIEF VISION OFFICER",
+    cvoSub: "Chairman of the Board",
+    dSavunma: "Defense Dept:",
+    dYazilim: "Software Dept:",
+    dDonanim: "Hardware Dept:",
+    
+    cgoTitle: "CHIEF GROWTH OFFICER",
+    cgoSub: "Growth & Expansion",
+    dTicari: "Commercial Assistance",
+    dSatis: "Sales Department",
+    dLojistik: "Logistics Department",
+    dEgitim: "Education Department",
+    
+    ctoTitle: "CHIEF TECHNOLOGY OFFICER",
+    ctoSub: "Technical Infrastructure",
+    dArge: "R&D Department",
+    dTasarim: "Product Design Department",
+    dBilgi: "Information & Comm. Dept",
+    
+    m1T: "1. ESTABLISHMENT & PARTIES",
+    m1C: "These Articles of Association have been drawn up to determine the principles of establishment, management, and operation of the company operating under the name ALPHATECH Holding. The company was officially founded on July 13, 2025.",
+    m2T: "2. COMPANY TITLE & PURPOSE",
+    m2C: "The official title of the company is ALPHATECH Holding. The primary objectives are: developing software frameworks, producing electronic hardware systems, executing advanced technological R&D, implementing innovative training networks, and deploying high-tier industrial solutions.",
+    m3T: "3. FIELDS OF ACTIVITY",
+    m3C: "The Holding operates dynamically across these sectors: Software technologies, hardware design, advanced R&D, corporate educational structures, UI/UX product design, commercial operations, global logistics, info-communication systems, and critical cyber defense platforms.",
+    m4T: "4. COMPANY MANAGEMENT",
+    m4C: "<strong>4.1 Board of Directors:</strong> The supreme decision-making body of the company. Strategic investments, funding allocations, and macro plans are approved here.<br><strong>4.2 Chairman:</strong> Holds the executive power to make urgent and critical strategic decisions when necessary, subject to subsequent Board approval.",
+    m5T: "5. EXECUTIVE MANAGEMENT",
+    m5C: "<strong>5.1 CVO (Chief Vision Officer):</strong> Sets the long-term vision and macro direction.<br><strong>5.2 CGO (Chief Growth Officer):</strong> Responsible for scaling commercial assets, pipelines, and market sales.<br><strong>5.3 CTO (Chief Technology Officer):</strong> Commands software, hardware architecture, and overall technical development.",
+    m6T: "6. CAPITAL & FINANCIAL PROVISIONS",
+    m6C: "6.1 Company capital and financial resources are fully managed under Board directives.<br>6.2 Board approval is strictly mandatory for all large-scale expenditures.<br>6.3 Every engineering project is governed by its own isolated budget and expenditure ceiling.",
+    m7T: "7. ORGANIZATIONAL STRUCTURE",
+    m7C: "The organization operates using a hybrid system based on functional departments and cross-functional project teams. Departments work autonomously but collaborate closely during cross-platform product cycles. Core sectors: R&D, Education, Hardware, Software, Product Design, Commercial Support, Sales, Logistics, Information, and Defense systems.",
+    m8T: "8. PROJECT LIFECYCLE",
+    m8C: "Projects systematically proceed through these gates: Idea Conceptualization → Formal Approval → Engineering/Technical Design → Production & Dev → Threat & Quality Testing → Marketing & Launch. No asset or resource can be allocated without explicit project validation.",
+    m9T: "9. CONFIDENTIALITY & SECURITY",
+    m9C: "All internal architectures, databases, and intellectual properties are strictly confidential. Continuous data protection and systemic defense perimeters are heavily maintained by the Defense and Information-Communication departments.",
+    m10T: "10. FINAL CLAUSE",
+    m10C: "This foundational charter serves as the primary governing constitution of ALPHATECH Holding and is legally binding across all corporate actions. It can only be amended by an official resolution of the Board of Directors."
+};
+
+function setLang(lang){
+    const l = (lang === "tr") ? tr : en;
+    
+    document.getElementById("mini").innerHTML = l.mini;
+    document.getElementById("title").innerHTML = l.title;
+    document.getElementById("desc").innerHTML = l.desc;
+    document.getElementById("sec-title-org").innerHTML = l.secTitleOrg;
+    document.getElementById("sec-title-charter").innerHTML = l.secTitleCharter;
+    
+    document.getElementById("cvo-title").innerHTML = l.cvoTitle;
+    document.getElementById("cvo-sub").innerHTML = l.cvoSub;
+    document.getElementById("d-savunma").innerHTML = l.dSavunma;
+    document.getElementById("d-yazilim").innerHTML = l.dYazilim;
+    document.getElementById("d-donanim").innerHTML = l.dDonanim;
+    
+    document.getElementById("cgo-title").innerHTML = l.cgoTitle;
+    document.getElementById("cgo-sub").innerHTML = l.cgoSub;
+    document.getElementById("d-ticari").innerHTML = l.dTicari;
+    document.getElementById("d-satis").innerHTML = l.dSatis;
+    document.getElementById("d-lojistik").innerHTML = l.dLojistik;
+    document.getElementById("d-egitim").innerHTML = l.dEgitim;
+    
+    document.getElementById("cto-title").innerHTML = l.ctoTitle;
+    document.getElementById("cto-sub").innerHTML = l.ctoSub;
+    document.getElementById("d-arge").innerHTML = l.dArge;
+    document.getElementById("d-tasarim").innerHTML = l.dTasarim;
+    document.getElementById("d-bilgi").innerHTML = l.dBilgi;
+    
+    for(let i=1; i<=10; i++){
+        document.getElementById(`m${i}-t`).innerHTML = l[`m${i}T`];
+        document.getElementById(`m${i}-c`).innerHTML = l[`m${i}C`];
+    }
+}
+</script>
+
+</body>
+</html>
